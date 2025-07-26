@@ -25,7 +25,7 @@ A **Model Context Protocol (MCP)** server that provides **EVMAuth-protected** ac
 ### Prerequisites
 - Node.js 16+
 - Webacy API key from [developers.webacy.co](https://developers.webacy.co/)
-- EVMAuth tokens for protected endpoints (get from [EVMAuth platform](https://evmauth.com))
+- EVMAuth tokens for protected endpoints (get from [Radius Testnet](https://testnet.radiustech.xyz/))
 
 ### Installation
 
@@ -94,16 +94,16 @@ npm run inspect
 
 ## 🔐 EVMAuth Token Protection
 
-This server uses [EVMAuth](https://evmauth.com) for token-gated access control:
+This server uses EVMAuth for token-gated access control on the [Radius Network](https://testnet.radiustech.xyz/):
 
 ### How It Works
-1. Users hold ERC-1155 tokens on Radius Network
+1. Users hold ERC-1155 tokens on [Radius Testnet](https://testnet.radiustech.xyz/)
 2. Token ID determines access tier (1=Basic, 3=Premium, 5=Pro)
 3. Cryptographic proof of ownership required for protected endpoints
 4. Zero-knowledge verification preserves privacy
 
 ### Getting Tokens
-Visit [EVMAuth platform](https://evmauth.com) to acquire access tokens.
+Visit [Radius Testnet](https://testnet.radiustech.xyz/) to acquire access tokens for testing.
 
 ## 🧪 Development Mode
 
@@ -119,7 +119,7 @@ EVMAUTH_DEV_MODE=true
 
 ### Using with Claude Desktop
 
-Add to your Claude Desktop configuration:
+Add to your Claude Desktop MCP configuration:
 ```json
 {
   "mcpServers": {
@@ -127,11 +127,29 @@ Add to your Claude Desktop configuration:
       "command": "node",
       "args": ["/path/to/webacy-protected-mcp/server.js"],
       "env": {
-        "WEBACY_API_KEY": "your_api_key"
+        "WEBACY_API_KEY": "your_api_key",
+        "EVMAUTH_DEV_MODE": "true"
       }
     }
   }
 }
+```
+
+### Production Deployment
+
+Deploy to [Railway](https://railway.app) with one click:
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/deploy)
+
+Or deploy manually:
+```bash
+# Set environment variables
+WEBACY_API_KEY=your_api_key
+EVMAUTH_CONTRACT_ADDRESS=0x9f2B42FB651b75CC3db4ef9FEd913A22BA4629Cf
+EVMAUTH_CHAIN_ID=1223954
+EVMAUTH_RPC_URL=https://rpc.radiustech.io
+
+# Deploy
+npm start
 ```
 
 ### Example Requests
@@ -160,10 +178,20 @@ Add to your Claude Desktop configuration:
 
 ## 🔗 Related Links
 
-- [Webacy API Documentation](https://webacy.readme.io/reference/webacy-api-overview)
-- [EVMAuth Documentation](https://docs.evmauth.com)
-- [Model Context Protocol](https://modelcontextprotocol.io)
-- [FastMCP Framework](https://github.com/jlowin/fastmcp)
+- [Webacy API Documentation](https://webacy.readme.io/reference/webacy-api-overview) - Complete API reference
+- [Webacy Platform](https://webacy.com) - Official Webacy website
+- [Radius Testnet](https://testnet.radiustech.xyz/) - Get test tokens and explore the network
+- [Radius Network Documentation](https://docs.radiustech.xyz/) - Learn about Radius blockchain
+- [Model Context Protocol](https://modelcontextprotocol.io) - MCP specification
+- [FastMCP Framework](https://github.com/jlowin/fastmcp) - FastMCP library
+- [EVMAuth SDK](https://github.com/evmauth/mcp-sdk) - Token-gating SDK
+
+## 🌐 Network Information
+
+- **Chain ID**: 1223954 (Radius Testnet)
+- **RPC URL**: https://rpc.radiustech.io
+- **Testnet Explorer**: [Radius Testnet Explorer](https://testnet.radiustech.xyz/)
+- **Contract**: `0x9f2B42FB651b75CC3db4ef9FEd913A22BA4629Cf`
 
 ## 📄 License
 
@@ -171,6 +199,7 @@ MIT License - see LICENSE file for details.
 
 ## 🤝 Support
 
-- Webacy API: [info@webacy.com](mailto:info@webacy.com)
-- EVMAuth: [EVMAuth Documentation](https://docs.evmauth.com)
-- Issues: GitHub Issues
+- **Webacy API**: [info@webacy.com](mailto:info@webacy.com)
+- **Radius Network**: [Radius Documentation](https://docs.radiustech.xyz/)
+- **EVMAuth SDK**: [GitHub Issues](https://github.com/evmauth/mcp-sdk/issues)
+- **Issues**: Create an issue in this repository

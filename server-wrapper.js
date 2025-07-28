@@ -16,6 +16,9 @@ import {
 // Load environment variables
 dotenv.config();
 
+// Set flag to prevent server.js from auto-starting
+process.env.WEBACY_WRAPPER_MODE = 'true';
+
 const port = parseInt(process.env.PORT) || 3001;
 console.log(`Starting server wrapper on port ${port}...`);
 

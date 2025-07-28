@@ -340,18 +340,19 @@ Object.entries(TOKEN_REQUIREMENTS).forEach(([method, tokenId]) => {
 });
 console.log('─────────────────────────────\n');
 
-// Start server based on environment
-const isProduction = process.env.RAILWAY_ENVIRONMENT || process.env.NODE_ENV === 'production';
-const port = parseInt(process.env.PORT) || 3001;
+// Start server function
+async function startServer() {
+  const isProduction = process.env.RAILWAY_ENVIRONMENT || process.env.NODE_ENV === 'production';
+  const port = parseInt(process.env.PORT) || 3001;
 
-console.log('🚀 Starting Webacy Risk Analysis MCP server...');
-console.log(`📊 Environment: ${isProduction ? 'Production' : 'Development'}`);
-console.log(`🔧 Port: ${port}`);
+  console.log('🚀 Starting Webacy Risk Analysis MCP server...');
+  console.log(`📊 Environment: ${isProduction ? 'Production' : 'Development'}`);
+  console.log(`🔧 Port: ${port}`);
 
-if (isProduction) {
-  // For Railway/production deployment
-  try {
-    await server.start({
+  if (isProduction) {
+    // For Railway/production deployment
+    try {
+      await server.start({
       transportType: "httpStream",
       httpStream: {
         port: port,
@@ -376,9 +377,16 @@ if (isProduction) {
     console.error('Stack trace:', error.stack);
     process.exit(1);
   }
-} else {
-  // For local development
-  server.start({
-    transportType: "stdio"
-  });
+  } else {
+    // For local development
+    server.start({
+      transportType: "stdio"
+    });
+  }
 }
+
+// Start the server
+startServer().catch(error => {
+  console.error('❌ Failed to start server:', error);
+  process.exit(1);
+});

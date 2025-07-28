@@ -165,11 +165,19 @@ server.addTool({
 async function startServer() {
   const isProduction = process.env.RAILWAY_ENVIRONMENT || process.env.NODE_ENV === 'production';
   
+  console.log('🔧 Environment check:');
+  console.log(`- NODE_ENV: ${process.env.NODE_ENV}`);
+  console.log(`- RAILWAY_ENVIRONMENT: ${process.env.RAILWAY_ENVIRONMENT}`);
+  console.log(`- PORT: ${process.env.PORT}`);
+  console.log(`- Production mode: ${isProduction}`);
+  
   if (isProduction) {
     const port = parseInt(process.env.PORT) || 3001;
     console.log(`🚀 Starting Webacy MCP server on port ${port}...`);
     
     try {
+      console.log('📦 Initializing FastMCP server...');
+      
       await server.start({
         transportType: "httpStream",
         httpStream: {
@@ -183,6 +191,7 @@ async function startServer() {
       console.log(`📍 MCP endpoint: http://0.0.0.0:${port}/mcp`);
       console.log(`🔍 Health available through MCP protocol`);
       console.log(`🌐 Ready for connections`);
+      console.log('🎯 Server startup completed successfully');
       
       // Keep process alive
       process.on('SIGTERM', () => {
@@ -190,8 +199,14 @@ async function startServer() {
         process.exit(0);
       });
       
+      process.on('SIGINT', () => {
+        console.log('SIGINT received, shutting down gracefully');
+        process.exit(0);
+      });
+      
     } catch (error) {
       console.error('❌ Failed to start server:', error);
+      console.error('Stack trace:', error.stack);
       process.exit(1);
     }
   } else {

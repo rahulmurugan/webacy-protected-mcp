@@ -29,7 +29,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "fastmcp": "^3.9.0",
+    "fastmcp": "^3.11.0",
     "jsonwebtoken": "^9.0.2",
     "node-fetch": "^3.3.2",
     "viem": "^2.32.0",

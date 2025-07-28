@@ -127,8 +127,7 @@ Add to your Claude Desktop MCP configuration:
       "command": "node",
       "args": ["/path/to/webacy-protected-mcp/server.js"],
       "env": {
-        "WEBACY_API_KEY": "your_api_key",
-        "EVMAUTH_DEV_MODE": "true"
+        "WEBACY_API_KEY": "your_api_key"
       }
     }
   }

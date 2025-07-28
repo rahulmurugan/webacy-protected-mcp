@@ -1,1 +1,1 @@
-web: node minimal.js 
+web: node minimal.js

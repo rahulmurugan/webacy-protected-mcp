@@ -10,4 +10,6 @@ services:
         value: production
       - key: WEBACY_API_KEY
         sync: false
-    autoDeploy: true 
+    autoDeploy: true
+    region: oregon
+    branch: main 

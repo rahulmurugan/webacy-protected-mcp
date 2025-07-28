@@ -2,8 +2,7 @@
   "name": "webacy-protected-mcp",
   "version": "1.0.0",
   "description": "EVMAuth-protected Webacy Risk Analysis MCP Server - Token-gated blockchain security analysis",
-  "main": "server.js",
-  "type": "module",
+  "main": "railway-cjs.js",
   "scripts": {
     "start": "node minimal.js",
     "start:original": "node server.js",

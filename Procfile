@@ -1,1 +1,1 @@
-web: node railway-cjs.js 
+web: node ultra-minimal.js 

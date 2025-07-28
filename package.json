@@ -5,11 +5,12 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
+    "start": "node minimal.js",
+    "start:original": "node server.js",
     "start:wrapper": "node start.js",
     "health": "node health-server.js",
-    "dev": "npx fastmcp dev server.js",
-    "inspect": "npx fastmcp inspect server.js",
+    "dev": "npx fastmcp dev minimal.js",
+    "inspect": "npx fastmcp inspect minimal.js",
     "test": "node test-integration.js"
   },
   "keywords": [

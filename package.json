@@ -1,16 +1,41 @@
 {
   "name": "webacy-protected-mcp",
   "version": "1.0.0",
-  "description": "Webacy Risk Analysis MCP Server",
-  "main": "ultra-minimal.js",
+  "description": "EVMAuth-protected Webacy Risk Analysis MCP Server - Token-gated blockchain security analysis",
+  "main": "minimal.js",
+  "type": "module",
   "scripts": {
-    "start": "node ultra-minimal.js"
+    "start": "node minimal.js",
+    "start:original": "node server.js",
+    "start:wrapper": "node start.js",
+    "health": "node health-server.js",
+    "dev": "npx fastmcp dev minimal.js",
+    "inspect": "npx fastmcp inspect minimal.js",
+    "test": "node test-integration.js"
   },
+  "keywords": [
+    "mcp",
+    "evmauth",
+    "webacy",
+    "security",
+    "risk-analysis",
+    "blockchain",
+    "token-gated"
+  ],
+  "author": "EVMAuth Demo",
+  "license": "MIT",
   "dependencies": {
+    "@evmauth/eip712-authn": "^0.3.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "node-fetch": "^3.3.2"
+    "express": "^4.18.2",
+    "fastmcp": "^3.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^3.3.2",
+    "viem": "^2.32.0",
+    "zod": "^3.23.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=16.0.0"
   }
 } 

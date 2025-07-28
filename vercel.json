@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "webacy-protected-mcp",
+  "builds": [
+    {
+      "src": "server-final.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server-final.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+} 

@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: webacy-protected-mcp
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server-final.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: WEBACY_API_KEY
+        sync: false
+    autoDeploy: true 
